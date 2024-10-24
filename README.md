@@ -33,6 +33,10 @@ You can download the dataset on the [Kaggle page](https://www.kaggle.com/dataset
   - [Steps to reproduce to build the deliverable](#steps-to-reproduce-to-build-the-deliverable)
     - [Pull requests in this project](#pull-requests-in-this-project)
     - [Tips to work on this project](#tips-to-work-on-this-project)
+  - [How to use our project](#How-to-use-our-project)
+    - [0. Environment Setup](#0-environment-setup)
+    - [1. EDA and Modelling](#1-eda-and-modelling)
+    - [2. Visualize deployment to retrain the model in Prefect](#2-visualize-deployment-to-retrain-the-model-in-prefect)
 
 ## Deliverables and notation
 
@@ -156,21 +160,27 @@ Welcome to our MLOps project!
 conda env create --file environment.yml
 ```
 
-2. Activate the environment 
+2. Activate the environment
 ```bash
 conda activate mlops-project-group5
 ```
 ### If you ned to change version of a package due to conflict follow this step
-1. change the version in the `requirements.in` file 
+1. change the version in the `requirements.in` file
 
 2. Compile the requirements
 ```bash
 ./install.sh
-``` 
+```
 
 3. Update your conda environment
 ```bash
 conda env update --file environment.yml --prune
+```
+
+### If you ned to makes some changes on our code
+You need to install the pre-commit hooks
+```bash
+pre-commit install
 ```
 
 ## 1. EDA and Modelling
