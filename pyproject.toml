@@ -41,9 +41,4 @@ known_third_party = ["pandas", "numpy", "scipy", "sklearn", "mlflow"]  # Add you
 skip_gitignore = true
 
 [tool.flake8]
-max-line-length = 88
-ignore = [
-    "E203",  # Ignore conflicts with Black about spaces before ':'
-    "W503",  # Ignore line break before binary operator (also Black-compatible)
-]
-exclude = ".git,__pycache__,build,dist"
+# in .flake8 file
