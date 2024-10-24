@@ -20,10 +20,16 @@ jobs:
       - name: Install pip-tools
         run: |
           pip install pip-tools
+
       - name: Compile and install dependencies from requirements.in
         run: |
           pip-compile requirements.in
           pip install -r requirements.txt
+
+      - name: Compile and install dependencies from requirements-dev.in
+        run: |
+          pip-compile requirements-dev.in
+          pip install -r requirements-dev.txt
       
       - name: Install pre-commit
         run: |

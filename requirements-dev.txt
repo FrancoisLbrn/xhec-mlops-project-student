@@ -101,7 +101,9 @@ loguru==0.7.2
 markdown-it-py==3.0.0
     # via rich
 matplotlib==3.9.2
-    # via -r requirements.txt
+    # via
+    #   -r requirements.txt
+    #   seaborn
 matplotlib-inline==0.1.7
     # via
     #   ipykernel
@@ -128,6 +130,7 @@ numpy==1.26.4
     #   pandas
     #   scikit-learn
     #   scipy
+    #   seaborn
 packaging==24.1
     # via
     #   -r requirements.txt
@@ -136,7 +139,9 @@ packaging==24.1
     #   matplotlib
     #   pytest
 pandas==2.1.1
-    # via -r requirements.txt
+    # via
+    #   -r requirements.txt
+    #   seaborn
 parso==0.8.4
     # via jedi
 pathspec==0.12.1
@@ -214,6 +219,8 @@ scipy==1.14.1
     # via
     #   -r requirements.txt
     #   scikit-learn
+seaborn==0.13.2
+    # via -r requirements-dev.in
 six==1.16.0
     # via
     #   -r requirements.txt
