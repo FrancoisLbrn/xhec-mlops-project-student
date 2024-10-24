@@ -10,11 +10,11 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
 
 @task
-def fix_column_names(df: pd.DataFrame) -> pd.DataFrame:
+def clean_column_names(df: pd.DataFrame) -> pd.DataFrame:
     """Replace spaces in column names with underscores."""
     columns = df.columns
-    columns_fixed = [col.replace(" ", "_") for col in columns]
-    df.columns = columns_fixed
+    columns_cleaned = [col.replace(" ", "_") for col in columns]
+    df.columns = columns_cleaned
     return df
 
 
@@ -123,7 +123,7 @@ def preprocess_data(
             The fitted or used preprocessor for the features.
     """
 
-    df = fix_column_names(df)
+    df = clean_column_names(df)
     if with_target:
         df = compute_target(df)
     if is_train:
