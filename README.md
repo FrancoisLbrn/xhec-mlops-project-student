@@ -141,3 +141,14 @@ This will guarantee that your code is formatted correctly and of good quality be
 ```bash
 pip-compile requirements.in
 ```
+
+_______________
+_______________
+_______________
+Welcome to our MLOps project!
+
+# Usage 
+1. Set-up environment with conda (recommended)
+```bash
+conda env create --file environment.yml
+```
