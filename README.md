@@ -165,6 +165,18 @@ conda env create --file environment.yml
 pre-commit install
 ```
 
+# Running the modelling notebook and comparing experiments on mlflow
+
+Be sure to be in the [notebooks](./notebooks) directory in your terminal.
+Run the whole [modelling.ipnb](./notebooks/modelling.ipynb).
+After having run the three experiments, you can compare them using the mlflow UI by running the following line in the terminal:
+```
+mlflow ui --host 0.0.0.0 --port 5002
+```
+
+You should then arrive on this UI, on which you can compare the different experiments / models:
+![](assets/mlflow.png)
+
 # Visualize deployment to retrain the model in Prefect
 
 Please follow these steps :
