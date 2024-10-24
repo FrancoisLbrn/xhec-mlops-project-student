@@ -191,6 +191,8 @@ docker build -t project-app -f Dockerfile.app .
 docker run -p 8000:8000 -p 4200:4200 project-app
 ```
 
+> Note: if you are in windows, you may need to run the following before building the image: `dos2unix ./bin/run_services.sh`
+
 - You should see this in your terminal:
 
 ![](assets/docker_terminal.png)
