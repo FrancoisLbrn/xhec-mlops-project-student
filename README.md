@@ -145,7 +145,28 @@ python3 src/modelling/deployment.py
 
 ![](assets/prefect_3.png)
 
-## 3. Deploy trained model on API
+## 3. Deploy an API to predict new observations
+Follow these steps:
+- Go in the web_service folder:
+```
+cd src/web_service
+```
 
+- Run the app:
+```
+uvicorn main:app --reload
+```
+- Click on the link provided: http://127.0.0.1:8000/docs
+
+- Click on Try it out:
+![](assets/api_try_it_out.JPG)
+
+- Fill here the data of your observation:
+![](assets/fill_observation.PNG)
+
+And then execute !
+
+- Your prediction is given just below:
+![](assets/api_prediction.PNG)
 
 ## 4. Run the whole workflow on Docker
