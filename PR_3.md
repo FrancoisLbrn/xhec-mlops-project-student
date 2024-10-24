@@ -10,12 +10,12 @@ git push
 
 The goal of this PR is to:
 
-- [ ] Use the prefect library to adapt the code developed in the PR2 to use `flow` and `task` objects
-- [ ] Create a deployment to retrain the model regularly
+- [x] Use the prefect library to adapt the code developed in the PR2 to use `flow` and `task` objects
+- [x] Create a deployment to retrain the model regularly
 
 Files to be modified: the `src/modelling` folder
 
-- [ ] Don't forget to update the `requirements.in` and `requirements-dev.in` files with the new dependencies (and compile them)
+- [x] Don't forget to update the `requirements.in` and `requirements-dev.in` files with the new dependencies (and compile them)
 - [ ] Don't forget to update the `README.md` file with the new steps to reproduce to run the code
 - [ ] You should among other add instructions to run the prefect UI and visualize the flow runs
 

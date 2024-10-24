@@ -3,7 +3,7 @@ from typing import List, Tuple
 import numpy as np
 import pandas as pd
 from config import CATEGORICAL_COLS, NUMERICAL_COLS
-from prefect import task
+from prefect import flow, task
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
@@ -58,7 +58,7 @@ def extract_x_y(
     return x, y
 
 
-@task
+@flow
 def preprocess_data(
     df: pd.DataFrame,
     is_train: bool = True,
