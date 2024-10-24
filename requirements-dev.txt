@@ -508,6 +508,11 @@ pytzdata==2020.1
     # via
     #   -r requirements.txt
     #   pendulum
+pywin32==308
+    # via
+    #   -r requirements.txt
+    #   docker
+    #   jupyter-core
 pyyaml==6.0.2
     # via
     #   -r requirements.txt

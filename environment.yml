@@ -7,7 +7,4 @@ dependencies:
   - pip=23.2.1
   - pip-tools=7.3.0
   - pip:
-    - -r requirements-dev.txt # requirements.txt for production
-
-# conda env create --file environment.yml
-# conda env update --file environment.yml --prune
+    - -r requirements.txt   # requirements-dev.txt for production

@@ -11,29 +11,39 @@ jobs:
         python-version: ['3.10']
 
     steps:
+      # Step 1: Checkout the repository
       - uses: actions/checkout@v2
+      
+      # Step 2: Set up the desired Python version
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
       
+      # Step 3: Install pip-tools
       - name: Install pip-tools
         run: |
           pip install pip-tools
 
+      # Step 4: Compile and install dependencies from requirements.in
       - name: Compile and install dependencies from requirements.in
         run: |
           pip-compile requirements.in
           pip install -r requirements.txt
 
-      - name: Compile and install dependencies from requirements-dev.in
+      # Step 5: Compile and install development dependencies (linters, formatters, pre-commit)
+      - name: Compile and install dev dependencies from requirements-dev.in
         run: |
           pip-compile requirements-dev.in
           pip install -r requirements-dev.txt
-      
-      - name: Install pre-commit
+
+      # Step 6: Install pre-commit hooks
+      - name: Install pre-commit hooks
         run: |
-          pre-commit install
-      - name: Run pre-commit checks
+          pip install pre-commit
+          pre-commit install  # Install the hooks defined in the configuration file
+
+      # Step 7: Run pre-commit hooks (including formatters and linters) across all files
+      - name: Run pre-commit checks (Linters & Formatters)
         run: |
           pre-commit run --all-files
