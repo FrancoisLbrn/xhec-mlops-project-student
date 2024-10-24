@@ -19,7 +19,7 @@
     - [0. Environment Setup](#0-environment-setup)
     - [1. EDA, Modelling and experiments tracking with MLFLow](#1-eda-modelling-and-experiments-tracking-with-mlflow)
     - [2. Create orchestration pipeline and deploy it with Prefect](#2-create-orchestration-pipeline-and-deploy-it-with-prefect)
-    - [3. Deploy trained model on API](#3-deploy-trained-model-on-api)
+    - [3. Deploy an API to predict new observations](#3-deploy-an-api-to-predict-new-observations)
     - [4. Run the whole workflow on Docker](#4-run-the-whole-workflow-on-docker)
 
 
@@ -153,20 +153,24 @@ cd src/web_service
 ```
 
 - Run the app:
-```
+
+```bash
 uvicorn main:app --reload
 ```
 - Click on the link provided: http://localhost:8000/docs
 
 - Click on Try it out:
+
 ![](assets/api_try_it_out.JPG)
 
 - Fill here the data of your observation:
+
 ![](assets/fill_observation.PNG)
 
-And then execute !
+And then execute.
 
 - Your prediction is given just below:
+
 ![](assets/api_prediction.PNG)
 
 ## 4. Run the whole workflow on Docker
@@ -187,8 +191,9 @@ docker build -t project-app -f Dockerfile.app .
 docker run -p 8000:8000 -p 4200:4200 project-app
 ```
 
-- Then you should see This in your terminal:
+- You should see this in your terminal:
+
 ![](assets/docker_terminal.png)
 
 - Click on the links that are provided to you to run the API and use PREFECT from different ports.
-Enjoy !
+Enjoy! :)
