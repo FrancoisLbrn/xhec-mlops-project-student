@@ -6,7 +6,14 @@ prefect config set PREFECT_API_URL=http://127.0.0.1:4200/api
 prefect server start --host 127.0.0.1 --port 4200 &
 
 # Navigate to the correct directory
-cd /web_service  # Make sure this path is correct
+cd /src/web_service  # Make sure this path is correct
 
 # Start FastAPI with Uvicorn on port 8001
-uvicorn main:app --host 127.0.0.1 --port 8001
+uvicorn main:app --host 127.0.0.1 --port 8001 &
+
+# Wait for Prefect server to be live before running deployment.py
+sleep 10
+
+# Run deployment.py to train model regularly in Prefect
+cd /src/modelling
+python3 deployment.py
