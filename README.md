@@ -164,3 +164,36 @@ conda env create --file environment.yml
 ```bash
 pre-commit install
 ```
+
+# Visualize deployment to retrain the model in Prefect
+
+Please follow these steps :
+
+- Set an API URL for your local server to make sure that your workflow will be tracked by this specific instance :
+```
+prefect config set PREFECT_API_URL=http://0.0.0.0:4200/api
+```
+
+- Check you have SQLite installed ([Prefect backend database system](https://docs.prefect.io/2.13.7/getting-started/installation/#external-requirements)):
+```
+sqlite3 --version
+```
+
+- Start a local prefect server :
+```
+prefect server start --host 0.0.0.0
+```
+
+If you want to reset the database, run :
+```
+prefect server database reset
+```
+
+
+You can visit the UI at http://0.0.0.0:4200/dashboard
+
+
+You can now run the following command to schedule regular model retraining:
+```
+python3 deployment.py
+```
