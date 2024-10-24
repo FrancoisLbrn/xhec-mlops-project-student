@@ -9,3 +9,4 @@ pytest
 mypy
 bandit
 pre-commit
+ipykernel
