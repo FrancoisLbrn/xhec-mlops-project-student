@@ -10,3 +10,4 @@ mypy
 bandit
 pre-commit
 ipykernel
+seaborn
