@@ -38,7 +38,7 @@ You can download the dataset on the [Kaggle page](https://www.kaggle.com/dataset
 
 ### Deliverables
 
-The deliverable of this project is a copy of this repository with the industrialization of the Abalone age prediction model. We expect to see: 
+The deliverable of this project is a copy of this repository with the industrialization of the Abalone age prediction model. We expect to see:
 
 1. a workflow to train a model using Prefect
 - The workflows to train the model and to make the inference (prediction of the age of abalone) are in separate modules and use Prefect `flow` and `task` objects
@@ -59,24 +59,24 @@ Each of your pull requests will be graded based on the following criteria:
   - use of docstrings and type hinting
 - **Formatting**
   - respect of clear code conventions
-  
+
   *P.S. you can use a linter and automatic code formatters to help you with that*
 
 - Proper **Functioning** of the code
   - the code must run without bugs
 
-Bseides the evaluation of the pull requests, we will also evaluate: 
+Bseides the evaluation of the pull requests, we will also evaluate:
 - **Reproducibility** and clarity of instructions to run the code (we will actually try to run your code)
-  - Having a clear README.md with 
+  - Having a clear README.md with
     - the context of the project
     - the name of the participants and their github users
     - the steps to recreate the Python environment
     - the instructions to run all parts of the code
-- Use of *Pull Requests* (see below) to coordinate your collaboration 
+- Use of *Pull Requests* (see below) to coordinate your collaboration
 
 ## Steps to reproduce to build the deliverable
 
-To help you with the structure and order of steps to perform in this project, we created different pull requests templates. 
+To help you with the structure and order of steps to perform in this project, we created different pull requests templates.
 Each branch in this repository corresponds to a future pull request and has an attached markdown file with the instructions to perform the tasks of the pull request.
 Each branch starts with a number.
 You can follow the order of the branches to build your project and collaborate.
@@ -102,11 +102,12 @@ You can follow the order of the branches to build your project and collaborate.
    > ```bash
    > git checkout branch_number_i
    > git pull origin master
-   > # At this point, you might have a VIM window opening, you can close it using the command ":wq" 
+   > # At this point, you might have a VIM window opening, you can close it using the command ":wq"
    > git push
    > ```
+    - Read and **follow** all the instructions in the the PR instructions file
     - Do as many commits as necessary on the branch_number_i to perform the task indicated in the corresponding markdown file
-    - Open a pull request from this branch to the main branch of your forked repository
+    - Open **A SINGLE** pull request from this branch to the main branch of your forked repository
     - Once done, merge the pull request in the main branch of your forked repository
 
 ### Pull requests in this project
@@ -141,3 +142,79 @@ This will guarantee that your code is formatted correctly and of good quality be
 ```bash
 pip-compile requirements.in
 ```
+
+_______________
+_______________
+_______________
+Welcome to our MLOps project!
+
+# Usage
+0. Compile the requirements
+```bash
+./install.sh
+```
+
+1. Set-up environment with conda (recommended)
+```bash
+conda env create --file environment.yml
+```
+
+## For dev only
+2. Install pre-commit
+```bash
+pre-commit install
+```
+
+# Running the modelling notebook and comparing experiments on mlflow
+
+Be sure to be in the [notebooks](./notebooks) directory in your terminal.
+Run the whole [modelling.ipnb](./notebooks/modelling.ipynb).
+After having run the three experiments, you can compare them using the mlflow UI by running the following line in the terminal:
+```
+mlflow ui --host 0.0.0.0 --port 5002
+```
+
+You should then arrive on this UI, on which you can compare the different experiments / models:
+![](assets/mlflow.png)
+
+# Visualize deployment to retrain the model in Prefect
+
+Please follow these steps :
+
+- Set an API URL for your local server to make sure that your workflow will be tracked by this specific instance :
+```
+prefect config set PREFECT_API_URL=http://0.0.0.0:4200/api
+```
+
+- Check you have SQLite installed ([Prefect backend database system](https://docs.prefect.io/2.13.7/getting-started/installation/#external-requirements)):
+```
+sqlite3 --version
+```
+
+- Start a local prefect server :
+```
+prefect server start --host 0.0.0.0
+```
+
+If you want to reset the database, run :
+```
+prefect server database reset
+```
+
+
+You can visit the UI at http://0.0.0.0:4200/dashboard
+
+
+You can now run the following command to schedule regular model retraining:
+```
+python3 deployment.py
+```
+
+When on http://0.0.0.0:4200/deployments, click on train-model to see the scheduled retraining of the model as illustrated hereunder:
+![](assets/prefect_1.png)
+
+You click on quick run to train the model now, then go at the bottom of the page and click on the latest run:
+![](assets/prefect_2.png)
+
+You should then be able to see the training flow and the different tasks within this flow:
+![](assets/prefect_3.png)
