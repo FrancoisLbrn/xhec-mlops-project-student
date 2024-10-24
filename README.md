@@ -1,6 +1,6 @@
 <div align="center">
 
-# xhec-mlops-project-student
+# X-HEC MLOps Project
 
 [![Python Version](https://img.shields.io/badge/python-3.9%20%7C%203.10-blue.svg)]()
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
@@ -11,20 +11,22 @@
 </div>
 
 
-
 ## Table of Contents
 
-- [xhec-mlops-project-student](#xhec-mlops-project-student)
   - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
   - [How to use our project](#How-to-use-our-project)
     - [0. Environment Setup](#0-environment-setup)
-    - [1. EDA and Modelling](#1-eda-and-modelling)
-    - [2. Visualize deployment to retrain the model in Prefect](#2-visualize-deployment-to-retrain-the-model-in-prefect)
+    - [1. EDA, Modelling and experiments tracking with MLFLow](#1-eda-modelling-and-experiments-tracking-with-mlflow)
+    - [2. Create orchestration pipeline and deploy it with Prefect](#2-create-orchestration-pipeline-and-deploy-it-with-prefect)
+    - [3. Deploy trained model on API](#3-deploy-trained-model-on-api)
+    - [4. Run the whole workflow on Docker](#4-run-the-whole-workflow-on-docker)
+
 
 
 ## Introduction
 **Welcome to our MLOps project!**
+
 This project has been created as part of an MLOps class.
 
 It aims to demonstrate several tools used in MLOps: serialization of trainings with MLFlow, model deployment with Prefect, model prediction on API with FastAPI, and dockerization of the whole workflow.
@@ -36,8 +38,6 @@ Authors:
 - Matthieu Delsart (@matthieudelsart)
 - François Lebrun (@FrancoisLbrn)
 - Augustin de Saint-Affrique (@AdeStAff)
-
-
 
 _________________
 
