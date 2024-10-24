@@ -7,8 +7,8 @@ from models import InputData
 from sklearn.base import BaseEstimator
 from sklearn.compose import ColumnTransformer
 
-from ...modelling.predicting import predict
-from ...modelling.preprocessing import preprocess_data
+from src.modelling.predicting import predict
+from src.modelling.preprocessing import preprocess_data
 
 
 def run_inference(
