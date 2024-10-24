@@ -1,0 +1,11 @@
+# Include all the applications dependencies
+-r requirements.txt
+
+# Dev dependencies
+flake8
+black
+isort
+pytest
+mypy
+bandit
+pre-commit

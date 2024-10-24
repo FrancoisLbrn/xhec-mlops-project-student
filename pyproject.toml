@@ -5,17 +5,46 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "xhec-mlops-project-student"
 authors = [
-  { name = "username", email = "user@email.com" },
-] # TODO: add authors here
+  { name = "Benjamin Cerf", email = "benjamin.cerf@hec.edu" },
+  { name = "Matthieu Delsart", email = "matthieu.delsart@hec.edu" },
+  { name = "Francois Lebrun", email = "francois.lebrun@hec.edu" },
+  { name = "Augustin De Saint Afrique", email = "augustin.bernard-de-saint-affrique@hec.edu" },
+]
 description = "This repository contains the solution for the X-HEC MLOps Project on the industrialization of Abalone age prediction model."
 version = "0.0.1"
 readme = "README.md"
-requires-python = ">3.10" # TODO: update this version
+requires-python = ">=3.10"
 
 [project.urls]
-"Homepage" = "https://github.com/artefactory/xhec-mlops-project-student" # TODO: update this URL
+"Homepage" = "https://github.com/FrancoisLbrn/xhec-mlops-project-student"
 
 [tool.setuptools]
 packages = ["src"]
 
-# TODO: add black, isort, and ruff (optional - not needed if using flake8) configurations here
+[tool.black]
+line-length = 88
+target-version = ['py310']
+skip-string-normalization = true
+exclude = '''
+/(
+    \.git
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 88
+known_third_party = ["pandas", "numpy", "scipy", "sklearn", "mlflow"]  # Add your third-party libraries
+skip_gitignore = true
+
+[tool.flake8]
+max-line-length = 88
+ignore = [
+    "E203",  # Ignore conflicts with Black about spaces before ':'
+    "W503",  # Ignore line break before binary operator (also Black-compatible)
+]
+exclude = ".git,__pycache__,build,dist"
+
