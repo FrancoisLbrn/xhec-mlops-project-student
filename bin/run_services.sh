@@ -1,6 +1,11 @@
-#!/bin/bash
+prefect config set PREFECT_API_URL=http://0.0.0.0:4200/api
 
-# TODO: Use this file in your Dockerfile to run the services
+sqlite3 --version
 
-prefect server start --host 0.0.0.0 --port 4201 &
-uvicorn src.web_service.main:app --host 0.0.0.0 --port 8001
+prefect server start --host 0.0.0.0
+
+# Go in the good directory
+cd src/web_service
+
+# Lancer l'API FastAPI avec Uvicorn
+uvicorn main:app --reload --port 8001
