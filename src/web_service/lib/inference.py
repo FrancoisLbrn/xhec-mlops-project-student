@@ -2,13 +2,12 @@ from typing import List
 
 import numpy as np
 import pandas as pd
-from loguru import logger
 from lib.models import InputData
-from sklearn.base import BaseEstimator
-from sklearn.compose import ColumnTransformer
-
 from lib.predicting import predict
 from lib.preprocessing import preprocess_data
+from loguru import logger
+from sklearn.base import BaseEstimator
+from sklearn.compose import ColumnTransformer
 
 
 def run_inference(
