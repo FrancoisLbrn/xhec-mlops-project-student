@@ -10,8 +10,6 @@ Tasks:
 - [x] Complete the `environment.yml` file if you are using `conda`
 - [x] Complete the `.pre-commit-config.yaml` file and install the pre-commits
 - [x] Set-up the CI using the `ci.yaml` file
-- [ ] Add instructions to README
+- [x] Add instructions to README
 
 ___
-
-*TODO: delete this markdown file and any unused files before merging the pull request*
