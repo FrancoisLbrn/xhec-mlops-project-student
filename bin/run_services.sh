@@ -6,7 +6,7 @@ sqlite3 --version
 prefect server start --host 0.0.0.0 &
 
 # Go in the good directory
-cd ../src/web_service
+cd src/web_service
 
 # Start FastAPI with Uvicorn
 uvicorn main:app --reload --port 8001
