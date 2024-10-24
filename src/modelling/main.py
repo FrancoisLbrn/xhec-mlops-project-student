@@ -13,7 +13,7 @@ def main(trainset_path: Path = DATA_DIRPATH) -> None:
     Train a model using the data at the given path and save the model (pickle).
     """
     # Read data
-    df = pd.read_csv(f"{DATA_DIRPATH}/abalone.csv")
+    df = pd.read_csv(f"{trainset_path}/abalone.csv")
     # Preprocess data
     x, y, preprocessor = preprocess_data(
         df,
