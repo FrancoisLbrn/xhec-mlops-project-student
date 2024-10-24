@@ -9,8 +9,10 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
 
 def fix_column_names(df: pd.DataFrame) -> pd.DataFrame:
-    for col in df.columns:
-        df[col] = df[col].str.replace(" ", "_")
+    """Replace spaces in column names with underscores."""
+    columns = df.columns
+    columns_fixed = [col.replace(" ", "_") for col in columns]
+    df.columns = columns_fixed
     return df
 
 
