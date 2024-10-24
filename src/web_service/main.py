@@ -1,6 +1,7 @@
 from app_config import APP_DESCRIPTION, APP_TITLE, APP_VERSION, MODEL_VERSION
 from fastapi import FastAPI
 from lib.models import InputData, PredictionOut
+from lib.modelling import run_inference
 
 app = FastAPI(
     title=APP_TITLE, description=APP_DESCRIPTION, version=APP_VERSION
@@ -17,4 +18,6 @@ def home() -> dict:
 
 @app.post("/predict", response_model=PredictionOut, status_code=201)
 def predict(payload: InputData) -> dict:
-    return {"health_check": "Prediction missing!"}
+    ...
+    y = run_inference([payload], dv, model) # à modifier
+    return {"abalone_age_prediction": y}
