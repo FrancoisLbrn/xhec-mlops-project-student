@@ -16,9 +16,7 @@ The goal of this PR is to:
 Files to be modified: the `src/modelling` folder
 
 - [x] Don't forget to update the `requirements.in` and `requirements-dev.in` files with the new dependencies (and compile them)
-- [ ] Don't forget to update the `README.md` file with the new steps to reproduce to run the code
-- [ ] You should among other add instructions to run the prefect UI and visualize the flow runs
+- [x] Don't forget to update the `README.md` file with the new steps to reproduce to run the code
+- [x] You should among other add instructions to run the prefect UI and visualize the flow runs
 
 ___
-
-*TODO: delete this markdown file before merging the pull request*
