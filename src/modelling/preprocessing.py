@@ -8,7 +8,9 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
 
-def compute_target(df: pd.DataFrame, rings_column: str = "Rings") -> pd.DataFrame:
+def compute_target(
+    df: pd.DataFrame, rings_column: str = "Rings"
+) -> pd.DataFrame:
     """Compute the abalone age based on the number of rings."""
 
     df["Age"] = df[rings_column] + 1.5
@@ -62,8 +64,11 @@ def preprocess_data(
 ) -> Tuple[np.ndarray, np.ndarray, ColumnTransformer]:
     """Preprocess the data and return X, y, and the preprocessor."""
 
-    df = compute_target(df)
+    if with_target:
+        df = compute_target(df)
     if is_train:
         preprocessor = fit_preprocessor(df)
-    x, y = extract_x_y(df=df, preprocessor=preprocessor, with_target=with_target)
+    x, y = extract_x_y(
+        df=df, preprocessor=preprocessor, with_target=with_target
+    )
     return x, y, preprocessor
