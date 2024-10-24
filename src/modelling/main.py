@@ -12,7 +12,8 @@ from utils import save_pickle
 @flow(name="train-model")
 def main(trainset_path: Path = DATA_DIRPATH) -> None:
     """
-    Train a model using the data at the given path and save the model (pickle).
+    Train a model using the data at the given path and save the model and
+    the preprocessor using pickle.
     """
     # Read data
     df = pd.read_csv(f"{trainset_path}/abalone.csv")
