@@ -2,14 +2,12 @@ from typing import List, Tuple
 
 import numpy as np
 import pandas as pd
-from config import CATEGORICAL_COLS, NUMERICAL_COLS
-from prefect import flow, task
+from lib.config import CATEGORICAL_COLS, NUMERICAL_COLS
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
 
-@task
 def clean_column_names(df: pd.DataFrame) -> pd.DataFrame:
     """Replace spaces in column names with underscores."""
 
@@ -19,7 +17,6 @@ def clean_column_names(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-@task
 def compute_target(
     df: pd.DataFrame, rings_column: str = "Rings"
 ) -> pd.DataFrame:
@@ -29,7 +26,6 @@ def compute_target(
     return df
 
 
-@task
 def fit_preprocessor(
     df: pd.DataFrame,
     numerical_features: List[str] = None,
@@ -55,7 +51,6 @@ def fit_preprocessor(
     return preprocessor
 
 
-@task
 def extract_x_y(
     df: pd.DataFrame,
     preprocessor: ColumnTransformer = None,
@@ -90,7 +85,6 @@ def extract_x_y(
     return x, y
 
 
-@flow
 def preprocess_data(
     df: pd.DataFrame,
     is_train: bool = True,
