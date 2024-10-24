@@ -7,10 +7,10 @@ NUMERICAL_COLS = [
     'Length',
     'Diameter',
     'Height',
-    'Whole weight',
-    'Shucked weight',
-    'Viscera weight',
-    'Shell weight',
+    'Whole_weight',
+    'Shucked_weight',
+    'Viscera_weight',
+    'Shell_weight',
 ]
 
 
