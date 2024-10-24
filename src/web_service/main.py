@@ -1,8 +1,8 @@
 from app_config import APP_DESCRIPTION, APP_TITLE, APP_VERSION, MODEL_VERSION
 from fastapi import FastAPI
-from lib.models import InputData, PredictionOut
 from lib.inference import run_inference
-from ..modelling.utils import load_pickle
+from lib.utils import load_pickle
+from lib.models import InputData, PredictionOut
 from app_config import PATH_TO_MODEL, PATH_TO_PREPROCESSOR
 
 

@@ -3,12 +3,12 @@ from typing import List
 import numpy as np
 import pandas as pd
 from loguru import logger
-from models import InputData
+from lib.models import InputData
 from sklearn.base import BaseEstimator
 from sklearn.compose import ColumnTransformer
 
-from src.modelling.predicting import predict
-from src.modelling.preprocessing import preprocess_data
+from lib.predicting import predict
+from lib.preprocessing import preprocess_data
 
 
 def run_inference(
