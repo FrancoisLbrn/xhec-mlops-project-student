@@ -47,4 +47,3 @@ ignore = [
     "W503",  # Ignore line break before binary operator (also Black-compatible)
 ]
 exclude = ".git,__pycache__,build,dist"
-
