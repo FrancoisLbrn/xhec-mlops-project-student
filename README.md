@@ -170,3 +170,28 @@ And then execute !
 ![](assets/api_prediction.PNG)
 
 ## 4. Run the whole workflow on Docker
+
+#### Why use Docker?
+Docker is used to containerize both the FastAPI application and Prefect server, ensuring consistent environments and easy deployment.
+
+#### Prerequisites
+Make sure you have Docker installed.
+
+#### To do:
+
+- Create the docker image:
+Go in your terminal and run:
+```
+docker build -t project-app -f Dockerfile.app .
+```
+
+- Run it on a container:
+```
+docker run -p 8001:8001 -p 4200:4200 project-app
+```
+
+- Then you should see This in your terminal:
+![](assets/docker_terminal.png)
+
+- Click on the links that are provided to you to run the API and use PREFECT from different ports.
+Enjoy !
