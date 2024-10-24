@@ -10,6 +10,7 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
 def compute_target(df: pd.DataFrame, rings_column: str = "Rings") -> pd.DataFrame:
     """Compute the abalone age based on the number of rings."""
+
     df["Age"] = df[rings_column] + 1.5
     return df
 
@@ -20,6 +21,7 @@ def fit_preprocessor(
     categorical_features: List[str] = None,
 ) -> Pipeline:
     """Fit the adapted preprocessor to the data."""
+
     if numerical_features is None:
         numerical_features = NUMERICAL_COLS
     numerical_transformer = Pipeline(steps=[("scaler", StandardScaler())])
@@ -41,18 +43,14 @@ def fit_preprocessor(
 def extract_x_y(
     df: pd.DataFrame,
     preprocessor: ColumnTransformer = None,
-    is_train: bool = True,
     with_target: bool = True,
 ) -> Tuple[np.ndarray, np.ndarray, ColumnTransformer]:
-    """Extract X and y from the dataframe"""
+    """Extract X and y from the dataframe."""
 
     y = None
     if with_target:
-        if is_train:
-            preprocessor = fit_preprocessor(df)
-            x = preprocessor.transform(df)
         y = df["Age"].values
-
+    x = preprocessor.transform(df)
     return x, y
 
 
@@ -67,7 +65,5 @@ def preprocess_data(
     df = compute_target(df)
     if is_train:
         preprocessor = fit_preprocessor(df)
-    x, y = extract_x_y(
-        df=df, preprocessor=preprocessor, with_target=with_target, is_train=is_train
-    )
+    x, y = extract_x_y(df=df, preprocessor=preprocessor, with_target=with_target)
     return x, y, preprocessor
