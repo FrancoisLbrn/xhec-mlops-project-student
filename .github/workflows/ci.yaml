@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ['3.10'] # TODO: update this version
+        python-version: ['3.10']
 
     steps:
       - uses: actions/checkout@v2
@@ -16,6 +16,24 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
+      
+      - name: Install pip-tools
+        run: |
+          pip install pip-tools
 
-      - name: # TODO create a step to install your project's dependencies
-      - name: # TODO create a step to test the quality of your code
+      - name: Compile and install dependencies from requirements.in
+        run: |
+          pip-compile requirements.in
+          pip install -r requirements.txt
+
+      - name: Compile and install dependencies from requirements-dev.in
+        run: |
+          pip-compile requirements-dev.in
+          pip install -r requirements-dev.txt
+      
+      - name: Install pre-commit
+        run: |
+          pre-commit install
+      - name: Run pre-commit checks
+        run: |
+          pre-commit run --all-files
