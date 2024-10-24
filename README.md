@@ -197,3 +197,12 @@ You can now run the following command to schedule regular model retraining:
 ```
 python3 deployment.py
 ```
+
+When on http://0.0.0.0:4200/deployments, click on train-model to see the scheduled retraining of the model as illustrated hereunder:
+![](assets/prefect_1.png)
+
+You click on quick run to train the model now, then go at the bottom of the page and click on the latest run:
+![](assets/prefect_2.png)
+
+You should then be able to see the training flow and the different tasks within this flow:
+![](assets/prefect_3.png)
