@@ -11,7 +11,15 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
 @task
 def clean_column_names(df: pd.DataFrame) -> pd.DataFrame:
-    """Replace spaces in column names with underscores."""
+    """
+    Clean the column names of a DataFrame by replacing spaces with underscores.
+
+    Parameters:
+        df (pd.DataFrame): The input DataFrame whose column names need to be cleaned.
+
+    Returns:
+        pd.DataFrame: A DataFrame with its column names modified such that any spaces
+                      are replaced with underscores."""
 
     columns = df.columns
     columns_cleaned = [col.replace(" ", "_") for col in columns]
@@ -23,7 +31,21 @@ def clean_column_names(df: pd.DataFrame) -> pd.DataFrame:
 def compute_target(
     df: pd.DataFrame, rings_column: str = "Rings"
 ) -> pd.DataFrame:
-    """Compute the abalone age based on the number of rings."""
+    """
+    Compute the abalone's age based on the number of rings in the given column.
+
+    The formula used to estimate the age is: Age = Rings + 1.5. This is a common method
+    used in abalone studies to approximate the age of the mollusk.
+
+    Parameters:
+        df (pd.DataFrame): The input DataFrame containing the abalone data.
+        rings_column (str, optional): The column name where the number of rings
+                                      is stored. Defaults to "Rings".
+
+    Returns:
+        pd.DataFrame: The input DataFrame with an additional 'Age' column
+                      containing the computed age of each abalone.
+    """
 
     df["Age"] = df[rings_column] + 1.5
     return df
@@ -35,7 +57,29 @@ def fit_preprocessor(
     numerical_features: List[str] = None,
     categorical_features: List[str] = None,
 ) -> Pipeline:
-    """Fit the adapted preprocessor to the data."""
+    """
+    Fit a preprocessing pipeline to the given DataFrame, transforming numerical
+    and categorical features.
+
+    This function constructs a preprocessing pipeline that standardizes numerical
+    features and one-hot encodes categorical features. It uses default feature sets
+    if none are provided.
+
+    Parameters:
+        df (pd.DataFrame): The input DataFrame to fit the preprocessor on.
+        numerical_features (List[str], optional): List of numerical column names
+                                                  to be scaled.
+                                                  Defaults to a predefined
+                                                  list `NUMERICAL_COLS`.
+        categorical_features (List[str], optional): List of categorical column names
+                                                    to be one-hot encoded.
+                                                    Defaults to a predefined
+                                                    list `CATEGORICAL_COLS`.
+
+    Returns:
+        Pipeline: A fitted `ColumnTransformer` pipeline that applies scaling
+                  to numerical features and one-hot encoding to categorical features.
+    """
 
     if numerical_features is None:
         numerical_features = NUMERICAL_COLS
