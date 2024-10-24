@@ -2,7 +2,7 @@ from typing import List, Tuple
 
 import numpy as np
 import pandas as pd
-from config import CATEGORICAL_FEATURES, NUMERICAL_FEATURES
+from config import CATEGORICAL_COLS, NUMERICAL_COLS
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
@@ -21,10 +21,10 @@ def fit_preprocessor(
 ) -> Pipeline:
     """Fit the adapted preprocessor to the data."""
     if numerical_features is None:
-        numerical_features = NUMERICAL_FEATURES
+        numerical_features = NUMERICAL_COLS
     numerical_transformer = Pipeline(steps=[("scaler", StandardScaler())])
     if categorical_features is None:
-        categorical_features = CATEGORICAL_FEATURES
+        categorical_features = CATEGORICAL_COLS
     categorical_transformer = Pipeline(
         steps=[("onehot", OneHotEncoder(handle_unknown="ignore"))]
     )
@@ -41,18 +41,19 @@ def fit_preprocessor(
 def extract_x_y(
     df: pd.DataFrame,
     preprocessor: ColumnTransformer = None,
+    is_train: bool = True,
     with_target: bool = True,
 ) -> Tuple[np.ndarray, np.ndarray, ColumnTransformer]:
     """Extract X and y from the dataframe"""
 
     y = None
     if with_target:
-        if preprocessor is None:
+        if is_train:
             preprocessor = fit_preprocessor(df)
             x = preprocessor.transform(df)
         y = df["Age"].values
 
-    return x, y, preprocessor
+    return x, y
 
 
 def preprocess_data(
