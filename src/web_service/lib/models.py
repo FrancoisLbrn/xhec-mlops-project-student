@@ -6,7 +6,7 @@ class InputData(BaseModel):
     Length: float
     Diameter: float
     Height: float
-    Whole_height: float
+    Whole_weight: float
     Shucked_weight: float
     Viscera_weight: float
     Shell_weight: float
