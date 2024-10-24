@@ -4,8 +4,8 @@ The objective of this PR is to set up the python environment you will work on.
 
 Tasks:
 
-- [ ] Add the app dependencies to the `requirements.in` file
-- [ ] Add the dev dependencied to the `requirements-dev.in` file
+- [x] Add the app dependencies to the `requirements.in` file
+- [x] Add the dev dependencied to the `requirements-dev.in` file
 - [ ] Complete the `TODO` tags in the `pyproject.toml` file
 - [ ] Complete the `environment.yml` file if you are using `conda`
 - [x] Complete the `.pre-commit-config.yaml` file and install the pre-commits
