@@ -9,8 +9,10 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
 
 def fix_column_names(df: pd.DataFrame) -> pd.DataFrame:
-    for col in df.columns:
-        df[col] = df[col].str.replace(" ", "_")
+    """Replace spaces in column names with underscores."""
+    columns = df.columns
+    columns_fixed = [col.replace(" ", "_") for col in columns]
+    df.columns = columns_fixed
     return df
 
 
@@ -71,7 +73,8 @@ def preprocess_data(
     """Preprocess the data and return X, y, and the preprocessor."""
 
     df = fix_column_names(df)
-    df = compute_target(df)
+    if with_target:
+        df = compute_target(df)
     if is_train:
         preprocessor = fit_preprocessor(df)
     x, y = extract_x_y(
