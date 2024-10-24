@@ -148,36 +148,50 @@ _______________
 _______________
 Welcome to our MLOps project!
 
-# Usage
-0. Compile the requirements
-```bash
-./install.sh
-```
+# How to use our project
+## 0. Environment Setup
 
 1. Set-up environment with conda (recommended)
 ```bash
 conda env create --file environment.yml
 ```
 
-## For dev only
-2. Install pre-commit
+2. Activate the environment 
 ```bash
-pre-commit install
+conda activate mlops-project-group5
+```
+### If you ned to change version of a package due to conflict follow this step
+1. change the version in the `requirements.in` file 
+
+2. Compile the requirements
+```bash
+./install.sh
+``` 
+
+3. Update your conda environment
+```bash
+conda env update --file environment.yml --prune
 ```
 
-# Running the modelling notebook and comparing experiments on mlflow
+## 1. EDA and Modelling
 
-Be sure to be in the [notebooks](./notebooks) directory in your terminal.
-Run the whole [modelling.ipnb](./notebooks/modelling.ipynb).
-After having run the three experiments, you can compare them using the mlflow UI by running the following line in the terminal:
-```
+### Running the modelling notebook and comparing experiments on mlflow
+
+Run the whole [modelling](./notebooks/modelling.ipynb) notebook to create and save experiment using MLflow.
+
+Be sure to be in the [notebooks](./notebooks) directory in your terminal. (Reminder: `cd notebooks`)
+
+After having run the three experiments in the [modelling](./notebooks/modelling.ipynb) notebook, you can compare them using the mlflow UI by running the following line in the terminal:
+```bash
 mlflow ui --host 0.0.0.0 --port 5002
 ```
+
+Then goes to http://localhost:5002
 
 You should then arrive on this UI, on which you can compare the different experiments / models:
 ![](assets/mlflow.png)
 
-# Visualize deployment to retrain the model in Prefect
+## 2. Visualize deployment to retrain the model in Prefect
 
 Please follow these steps :
 
@@ -202,15 +216,17 @@ prefect server database reset
 ```
 
 
-You can visit the UI at http://0.0.0.0:4200/dashboard
+You can visit the UI at http://localhost:4200/dashboard
 
 
-You can now run the following command to schedule regular model retraining:
+You can now run **in another terminal** the following command, at the root of the directory, to schedule regular model retraining:
+
+*(Be sure to reactivate your `mlops-project-group5` environment)*
 ```
-python3 deployment.py
+python3 src/modelling/deployment.py
 ```
 
-When on http://0.0.0.0:4200/deployments, click on train-model to see the scheduled retraining of the model as illustrated hereunder:
+When on http://localhost:4200/deployments, click on train-model to see the scheduled retraining of the model as illustrated hereunder:
 ![](assets/prefect_1.png)
 
 You click on quick run to train the model now, then go at the bottom of the page and click on the latest run:
