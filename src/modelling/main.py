@@ -3,11 +3,13 @@ from pathlib import Path
 
 import pandas as pd
 from config import DATA_DIRPATH, LOCAL_OBJECTS_DIRPATH
+from prefect import flow
 from preprocessing import preprocess_data
 from training import train_model
 from utils import save_pickle
 
 
+@flow
 def main(trainset_path: Path = DATA_DIRPATH) -> None:
     """
     Train a model using the data at the given path and save the model (pickle).
