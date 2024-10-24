@@ -8,6 +8,12 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
 
+def fix_column_names(df: pd.DataFrame) -> pd.DataFrame:
+    for col in df.columns:
+        df[col] = df[col].str.replace(" ", "_")
+    return df
+
+
 def compute_target(
     df: pd.DataFrame, rings_column: str = "Rings"
 ) -> pd.DataFrame:
@@ -64,6 +70,7 @@ def preprocess_data(
 ) -> Tuple[np.ndarray, np.ndarray, ColumnTransformer]:
     """Preprocess the data and return X, y, and the preprocessor."""
 
+    df = fix_column_names(df)
     if with_target:
         df = compute_target(df)
     if is_train:
