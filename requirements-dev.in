@@ -1,7 +1,7 @@
-# Inclure les dépendances de l'application
+# Include all the applications dependencies
 -r requirements.txt
 
-# Dépendances de développement
+# Dev dependencies
 flake8
 black
 isort
