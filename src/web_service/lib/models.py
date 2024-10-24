@@ -13,4 +13,4 @@ class InputData(BaseModel):
 
 
 class PredictionOut(BaseModel):
-    age: float
+    abalone_age_prediction: float
