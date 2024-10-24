@@ -1,5 +1,4 @@
 import pickle
-from typing import Any
 
 
 def load_pickle(path: str):
