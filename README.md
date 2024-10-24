@@ -156,7 +156,7 @@ cd src/web_service
 ```
 uvicorn main:app --reload
 ```
-- Click on the link provided: http://127.0.0.1:8000/docs
+- Click on the link provided: http://localhost:8000/docs
 
 - Click on Try it out:
 ![](assets/api_try_it_out.JPG)
@@ -171,9 +171,6 @@ And then execute !
 
 ## 4. Run the whole workflow on Docker
 
-#### Why use Docker?
-Docker is used to containerize both the FastAPI application and Prefect server, ensuring consistent environments and easy deployment.
-
 #### Prerequisites
 Make sure you have Docker installed.
 
@@ -187,7 +184,7 @@ docker build -t project-app -f Dockerfile.app .
 
 - Run it on a container:
 ```
-docker run -p 8001:8001 -p 4200:4200 project-app
+docker run -p 8000:8000 -p 4200:4200 project-app
 ```
 
 - Then you should see This in your terminal:

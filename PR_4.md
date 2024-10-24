@@ -10,21 +10,21 @@ git push
 
 The goal of this PR is to:
 
-- [ ] Create a FastAPI API to make predictions on new data
-- [ ] Dockerize the API
+- [x] Create a FastAPI API to make predictions on new data
+- [x] Dockerize the API
 
 Files to be modified:
-- [ ] the `src/web_service` folder
-- [ ] the `bin/run_services.sh` file
-- [ ] `Dockerfile.app`
-- [ ] Add any other file you find relevant to help you with the deployment work
+- [x] the `src/web_service` folder
+- [x] the `bin/run_services.sh` file
+- [x] `Dockerfile.app`
+- [x] Add any other file you find relevant to help you with the deployment work
 
 Recommendation: you should first make the Fast API work locally before trying to run it on a docker container.
 
 Notes:
 
-- [ ] Don't forget to update the README.md with the steps to reproduce to run the API (inside the docker container)
-- [ ] Finalize the README.md so you include all the instructions presented initially
+- [x] Don't forget to update the README.md with the steps to reproduce to run the API (inside the docker container)
+- [x] Finalize the README.md so you include all the instructions presented initially
 - [ ] (Make sure the REAMDE.md is not the initial one from the template)
 - [ ] **Check that there are no TODOs left in the code!**
 - [ ] Check that your `requirements.in` and `requirements.txt` are up to date
