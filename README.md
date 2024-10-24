@@ -149,6 +149,11 @@ _______________
 Welcome to our MLOps project!
 
 # Usage
+0. Compile the requirements
+```bash
+./install.sh
+```
+
 1. Set-up environment with conda (recommended)
 ```bash
 conda env create --file environment.yml

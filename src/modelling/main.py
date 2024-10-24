@@ -21,7 +21,7 @@ def main(trainset_path: Path = DATA_DIRPATH) -> None:
     x, y = extract_x_y(df, preprocessor, is_train=True, with_target=True)
     x, y, preprocessor = extract_x_y(df, is_train=True, with_target=True)
 
-    # (Optional) Pickle encoder if need be
+    # Pickle data encoder
     save_pickle(f"{LOCAL_OBJECTS_DIRPATH}/preprocessor.pkl", preprocessor)
 
     # Train model
