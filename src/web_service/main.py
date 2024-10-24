@@ -1,7 +1,10 @@
 from app_config import APP_DESCRIPTION, APP_TITLE, APP_VERSION, MODEL_VERSION
 from fastapi import FastAPI
 from lib.models import InputData, PredictionOut
-from lib.modelling import run_inference
+from lib.inference import run_inference
+from ..modelling.utils import load_pickle
+from app_config import PATH_TO_MODEL, PATH_TO_PREPROCESSOR
+
 
 app = FastAPI(
     title=APP_TITLE, description=APP_DESCRIPTION, version=APP_VERSION
@@ -17,7 +20,8 @@ def home() -> dict:
 
 
 @app.post("/predict", response_model=PredictionOut, status_code=201)
-def predict(payload: InputData) -> dict:
-    ...
-    y = run_inference([payload], dv, model) # à modifier
+def predict(value: InputData) -> dict:
+    model = load_pickle(PATH_TO_MODEL)
+    preprocessor = load_pickle(PATH_TO_PREPROCESSOR)
+    y = run_inference([value], preprocessor, model) 
     return {"abalone_age_prediction": y}
