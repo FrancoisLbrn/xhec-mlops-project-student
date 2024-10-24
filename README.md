@@ -39,7 +39,7 @@ Authors:
 - François Lebrun (@FrancoisLbrn)
 - Augustin de Saint-Affrique (@AdeStAff)
 
-_________________
+
 
 # How to use our project
 ## 0. Environment Setup
