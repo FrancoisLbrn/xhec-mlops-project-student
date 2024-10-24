@@ -12,6 +12,7 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler
 @task
 def clean_column_names(df: pd.DataFrame) -> pd.DataFrame:
     """Replace spaces in column names with underscores."""
+
     columns = df.columns
     columns_cleaned = [col.replace(" ", "_") for col in columns]
     df.columns = columns_cleaned
@@ -120,8 +121,7 @@ def preprocess_data(
             Target variable (y) as a numpy array if `with_target` is True;
             otherwise, None.
         - preprocessor : ColumnTransformer
-            The fitted or used preprocessor for the features.
-    """
+            The fitted or used preprocessor for the features."""
 
     df = clean_column_names(df)
     if with_target:
